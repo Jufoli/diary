@@ -20,6 +20,12 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `bower install`
 
+Es wird eine Fehlermeldung nach aufrufen der Startseite kommen, hier die Lösung dafür:
+
+* Im Dateibrowser in den Ordner bower_components welchseln
+* Dort ist ein Ordner "jQueryEventCalendar", diesen Kopieren! und umbenennen in "jquery-eventcalendar"
++ Server wieder starten.
+
 ## Running / Development
 
 * `ember server`
