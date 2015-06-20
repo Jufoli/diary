@@ -1,0 +1,38 @@
+<h2 class="view-header col-md-offset-1 col-sm-offset-1">Neuen Eintrag erstellen</h2>
+<div class="content-border col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10">
+	<form>
+        <div class="datum"><label for="date">Datum:</label>
+            {{pick-a-date 
+            date=date 
+            placeholder="Pick a date"
+            value=date
+            formatSubmit= "dd-mm-yyyy"               
+            }}</div>
+		<div class="zeit">
+            <label for="time">Uhrzeit: </label>
+            {{pick-a-time 
+            date=date
+            value=time
+            placeholder="Pick a time"
+            }}
+        </div><div class="titel"><label for="title">Titel:</label>
+        {{input
+  type="text"
+  id="title"
+  value=title}}</div>
+        <div class="eintrag">
+		<label for="entry">Eintrag:<br></label>
+         {{textarea
+  id="entry"
+  value=desc
+        rows ="15"
+        cols ="60"}}</div>
+	</form>
+	{{#link-to 'calendar'}}<button class="btn btn-primary">Abbrechen</button>{{/link-to}}
+	<button {{action 'save'}} class="btn btn-primary">Speichern</button>
+</div>
+  <!--options={
+            monthsFull=['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+            monthsShort=['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
+            weekdaysFull=['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
+            weekdaysShort=['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa']}   -->    

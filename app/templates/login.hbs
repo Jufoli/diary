@@ -1,0 +1,16 @@
+<h2 class="view-header col-md-offset-1 col-sm-offset-1">Login</h2>
+<form class="content-border col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
+	<div class="form-row">
+		<label class="col-sm-4 col-md-4" for="username">Benutzername:</label>
+		<span class="col-sm-7 col-md-7">{{input value=username}}</span> <br>
+	</div>	
+	<div class="form-row">
+		<label class="col-sm-4 col-md-4" for="password">Passwort:</label>
+		<span class="col-sm-7 col-md-7">{{input value=password type="password"}}</span><br>
+	</div>
+	<button {{action 'login'}} class="btn btn-primary">Login</button>
+	
+	{{#if showLoginFailed}}
+		<p><br/>Bitte gültige Login-Daten eingeben!</p>
+	{{/if}}
+</form>
