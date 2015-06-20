@@ -328,15 +328,9 @@
 							eventMonthToShow = parseInt(eventMonth) + 1,
 							eventHour = eventTime[0],
 							eventMinute = eventTime[1],
-							eventSeconds = eventTime[2],
-							eventAMPM = 'am',
-							eventDate = new Date(eventYear, eventMonth, eventDay, eventHour, eventMinute, eventSeconds);
-						if (eventHour > 12) {
-							eventHour -= 12;
-							eventAMPM = 'pm';
-						} else if (eventHour === "00") {
-							eventHour = 12;
-						}
+							eventAMPM = '',
+							eventDate = new Date(eventYear, eventMonth, eventDay);
+						
 					} else {
 						var eventDate = new Date(parseInt(event.date)),
 							eventYear = eventDate.getFullYear(),
@@ -344,14 +338,7 @@
 							eventDay = eventDate.getDate(),
 							eventMonthToShow = eventMonth + 1,
 							eventHour = eventDate.getHours(),
-							eventMinute = eventDate.getMinutes(),
-							eventAMPM = 'am';
-						if (eventHour > 12) {
-							eventHour -= 12;
-							eventAMPM = 'pm';
-						} else if (eventHour === "00") {
-							eventHour = 12;
-						}
+							eventMinute = eventDate.getMinutes();
 					}
 
 					if (parseInt(eventMinute) <= 9) {

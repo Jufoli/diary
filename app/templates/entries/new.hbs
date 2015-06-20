@@ -3,25 +3,24 @@
 	<form>
         <div class="datum"><label for="date">Datum:</label>
             {{pick-a-date 
-            date=date 
             placeholder="Pick a date"
             value=date
-            formatSubmit= "dd-mm-yyyy"               
+            formatSubmit= "dd-mm-yyyy"
+            format="dd-mm-yyyy"
             }}</div>
 		<div class="zeit">
             <label for="time">Uhrzeit: </label>
             {{pick-a-time 
-            date=date
             value=time
             placeholder="Pick a time"
             }}
-        </div><div class="titel"><label for="title">Titel:</label>
+        </div><div class="titel"><label for="title">Titel:</label><br>
         {{input
   type="text"
   id="title"
   value=title}}</div>
         <div class="eintrag">
-		<label for="entry">Eintrag:<br></label>
+		<label for="entry">Eintrag:</label><br>
          {{textarea
   id="entry"
   value=desc
