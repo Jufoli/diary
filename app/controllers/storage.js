@@ -1,51 +1,37 @@
 import Ember from 'ember';
-
+ 
 export default Ember.Controller.extend({
-
+ 
     entryIndex : 3,
-    login : function(username, passwort)
+    login : function(usr, pwd)
     {
-        /*var users = this.store.find('user');
-
-         var j = 0;
-
-         for(var i = 0;i < users.length; i++){
-
-         if(users[i].username == username){
-
-         if(users[i].password == passwort){
-
-         // username und zugehöriges Passwort passen! return true
-         return true;
-         }else{
-         // Passwort falsch, return false
-         return false;
-         }
-         }else{
-         j++;
-         }
-         }
-
-         // Keinen passenden User gefunden, return false
-         if(j == users.length){
-         return false;
-         }*/
-        return true;
-    },
-
-    logout : function() {
-        // destroy session
-        return true;
-    },
-
-    registrate : function () {
-        //TODO existiert User?
-        this.store.push('user', {
-            username: "",
-            password: ""
+        var users =  this.store.find('user', {username: usr, password :pwd}).then(function(u){
+            alert("Login!");
+            return true;
+        }).catch(function(){
+            alert("Refuse!");
+            return false;
         });
     },
-
+ 
+    registrate : function (usr, pwd) {
+        var users =  this.store.find('user', {username: usr}).then(function(u){
+            alert("No Reg!");
+            return false;
+        }).catch(function(){
+ 
+            alert("reg!");
+            var newuser = this.store.createRecord('user', {
+                username: usr,
+                password: pwd
+            });
+ 
+            newuser.save();
+            return true;
+        });
+ 
+    },
+ 
     saveTagebuchEintrag : function (date, title, content) {
         var index = this.get('entryIndex');
         index++;
@@ -56,25 +42,29 @@ export default Ember.Controller.extend({
             url: "entries/"+index,
             description: content
         });
-        
+         
         entry.save();
         this.set('entryIndex', index);
     },
-
+ 
     editTagebuchEintrag : function (id, author, headline, content) {
-
+ 
         var entry = this.store.find('entry', id);
-
+ 
+        entry.set('title',headline);
+        entry.set('description',content);
+ 
+        entry.save();
+ 
     },
-
+ 
     getTagebuchEintrag : function (id) {
-
         return this.store.find('entry', id);
-
+ 
     },
-
+ 
     getAllTagebuchEintraege : function () {
         return this.store.find('entry');
     }
-
+ 
 });

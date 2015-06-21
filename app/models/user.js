@@ -1,11 +1,11 @@
-Diary.User =  DS.Model.extend({
-    username: "",
-    password: "",
-    entries : DS.hasMany('Entry'),
-    session : DS.belongsTo('userSession')
+import DS from 'ember-data';
+ 
+var user = DS.Model.extend({
+     
+    username: DS.attr('string'),
+    password: DS.attr('string'),
+    entries : DS.hasMany('entries')
 });
-
-// TODO: Sessions
-Diary.UserSession = DS.Model.extend({
-    session : DS.belongsTo('user')
-});
+ 
+ 
+export default user;
