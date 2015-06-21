@@ -2,7 +2,7 @@ import Ember from 'ember';
  
 export default Ember.Controller.extend({
  
-    entryIndex : 3,
+    entryIndex : 1,
     login : function(usr, pwd)
     {
         var users =  this.store.find('user', {username: usr, password :pwd}).then(function(u){
@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
             id: index,
             date: date,
             title: title,
-            url: "entries/"+index,
+            url: "edit/"+index,
             description: content
         });
          
